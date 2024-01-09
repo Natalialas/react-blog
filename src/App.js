@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-// import Container from './components/Container/Container'
-// import NavBar from './components/NavBar/NavBar'
+import { Container } from 'react-bootstrap'
+import Header from './components/views/Header/Header';
+import Footer from './components/views/Footer/Footer';
 import Home from './components/pages/Home/Home'
 import SinglePost from './components/pages/SinglePost/SinglePost';
 import AddPost from './components/pages/AddPost/AddPost';
@@ -11,8 +12,8 @@ import NotFound from './components/pages/NotFound/NotFound';
 const App = () => {
   return (
     <main>
-     {/* <NavBar />
-     <Container> */}
+     <Container>
+      <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<SinglePost />} />
@@ -21,7 +22,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-     {/* </Container> */}
+        <Footer />
+     </Container>
    </main>
   );
 };
