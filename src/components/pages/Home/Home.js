@@ -2,11 +2,12 @@ import { getAllPosts } from "../../../redux/postsRedux";
 import { useSelector } from 'react-redux';
 import { Row, Col, Card } from 'react-bootstrap';
 import Button from "../../common/Button/Button";
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
 
-    const posts = useSelector(getAllPosts);
+    const posts = useSelector((state) => getAllPosts(state));
 
     return (
         <div>
@@ -24,7 +25,9 @@ const Home = () => {
                                     <strong>Published:</strong> {post.publishedDate}
                                 </div>
                                 <div className="my-3">{post.shortDescription}</div>
-                                <Button>Read more</Button>
+                                <Link to={`/post/${post.id}`}>
+                                    <Button>Read more</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </Col>
