@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import  { Button, Form } from "react-bootstrap";
+import  { Button, Form, Row, Col } from "react-bootstrap";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const PostForm = ({ action, actionText, ...props}) => {
@@ -17,7 +21,10 @@ const PostForm = ({ action, actionText, ...props}) => {
       };
 
     return (
+    <section>
+        <Row className="d-flex flex-column">  
         <Form onSubmit={handleSubmit}>
+        <Col lg={10} xs={12} md={8}>
             <Form.Group className="mb-3" controlId="title">
                 <Form.Label>Title:</Form.Label>
                 <Form.Control type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -30,7 +37,7 @@ const PostForm = ({ action, actionText, ...props}) => {
 
             <Form.Group className="mb-3" controlId="publishedDate">
                 <Form.Label>Published Date:</Form.Label>
-                <Form.Control type="text" value={publishedDate} onChange={(e) => setPublishedDate(e.target.value)} />
+                <DatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} className="form-control" placeholderText="Date" dateFormat="dd/MM/yyyy" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="shortDescription">
@@ -40,11 +47,14 @@ const PostForm = ({ action, actionText, ...props}) => {
 
             <Form.Group className="mb-3" controlId="content">
                 <Form.Label>Content:</Form.Label>
-                <Form.Control type="text" value={content} onChange={(e) => setContent(e.target.value)} />
+                <ReactQuill theme="snow" style={{ height: '200px' }} value={content} onChange={setContent} />
             </Form.Group>
 
-            <Button variant="primary" type="submit">{actionText}</Button>
+            </Col>
+            <Button variant="primary" type="submit" className="mx-1 mt-5">{actionText}</Button>
         </Form>
+      </Row>
+      </section>
     );
   };
 

@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { useParams } from 'react-router';
 import RemovePost from '../RemovePost/RemovePost';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import { dateToStr } from '../../../utils/dateToStr';
 
 
 const SinglePost = (props) => {
@@ -31,8 +32,8 @@ const SinglePost = (props) => {
                 <Card className="border-0" >
                     <Card.Body>
                     <Card.Text className="mb-2"><b>Author:</b> {postData.author}</Card.Text>
-                    <Card.Text className="mb-3"><b>Published:</b> {postData.publishedDate}</Card.Text>
-                    <Card.Text className="mb-3">{postData.content}</Card.Text>
+                    <Card.Text className="mb-3"><b>Published:</b> {dateToStr(postData.publishedDate)}</Card.Text>
+                    <Card.Text className="mb-3" dangerouslySetInnerHTML={{ __html: postData.content }}></Card.Text>
                     </Card.Body>
                 </Card>
             </Col> 

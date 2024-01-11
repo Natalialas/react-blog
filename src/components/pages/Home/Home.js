@@ -2,6 +2,7 @@ import { getAllPosts } from "../../../redux/postsRedux";
 import { useSelector } from 'react-redux';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { dateToStr } from "../../../utils/dateToStr";
 
 
 const Home = (props) => {
@@ -30,7 +31,7 @@ const Home = (props) => {
                                     <strong>Author:</strong> {post.author}
                                 </div>
                                 <div>
-                                    <strong>Published:</strong> {post.publishedDate}
+                                    <strong>Published:</strong> {dateToStr(new Date(post.publishedDate))}
                                 </div>
                                 <div className="my-3">{post.shortDescription}</div>
                                 <Link to={`/post/${post.id}`}>
