@@ -33,6 +33,7 @@ const SinglePost = (props) => {
                     <Card.Body>
                     <Card.Text className="mb-2"><b>Author:</b> {postData.author}</Card.Text>
                     <Card.Text className="mb-3"><b>Published:</b> {dateToStr(postData.publishedDate)}</Card.Text>
+                    <Card.Text className="mb-3"><b>Category:</b> {postData.category}</Card.Text>
                     <Card.Text className="mb-3" dangerouslySetInnerHTML={{ __html: postData.content }}></Card.Text>
                     </Card.Body>
                 </Card>
